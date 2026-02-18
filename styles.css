@@ -1,0 +1,96 @@
+:root {
+  --glass: rgba(0,0,0,.45);
+  --text: #fff;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+
+  background:
+    radial-gradient(1200px 600px at 20% 20%, rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(900px 500px at 80% 30%, rgba(255,255,255,.08), transparent 55%),
+    linear-gradient(135deg, #1b0b2e, #0b1d2e 55%, #1f2a0b);
+
+  padding:24px;
+}
+
+.card{
+  width:min(880px, 100%);
+  background: var(--glass);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 22px;
+  padding: 22px 22px 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.badge{
+  position:absolute;
+  top:16px;
+  right:16px;
+  font-weight:800;
+  font-size:22px;
+  padding:10px 14px;
+  border-radius:999px;
+  background: rgba(255,255,255,.14);
+}
+
+.title{
+  margin: 6px 0 10px;
+  font-size: 22px;
+}
+
+.hint{
+  margin: 0 0 14px;
+  font-size: 14px;
+  opacity:.75;
+}
+
+audio{
+  width:100%;
+  margin: 10px 0 16px;
+}
+
+.lyrics{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(0,0,0,.22);
+  min-height: 200px;
+}
+
+.line{
+  font-size: 26px;
+  opacity: .5;
+  transition: all .2s;
+}
+
+.line.active{
+  opacity: 1;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255,255,255,.8);
+}
+
+.footer{
+  margin-top: 10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.btn{
+  cursor:pointer;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
