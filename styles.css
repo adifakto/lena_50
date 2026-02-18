@@ -116,7 +116,7 @@ audio{
 }
 
 .line{
-  font-size: 28px;
+  font-size: 24px;
   opacity: .45;
   transition: opacity .2s ease, transform .2s ease, filter .2s ease;
   filter: blur(0.2px);

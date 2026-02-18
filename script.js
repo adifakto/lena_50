@@ -77,7 +77,7 @@ function render() {
   lyricsBox.innerHTML = "";
 
   const start = Math.max(0, (index === -1 ? 0 : index - 1));
-  const end = Math.min(LYRICS.length, start + 6);
+  const end = Math.min(LYRICS.length, start + 5);
 
   for (let i = start; i < end; i++) {
     const div = document.createElement("div");
