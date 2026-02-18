@@ -12,14 +12,15 @@ body{
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--text);
 
-  background:
-    radial-gradient(1200px 600px at 20% 20%, rgba(255,255,255,.10), transparent 60%),
-    radial-gradient(900px 500px at 80% 30%, rgba(255,255,255,.08), transparent 55%),
-    linear-gradient(135deg, #1b0b2e, #0b1d2e 55%, #1f2a0b);
+  background-image: url('back.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   padding:24px;
 }
 
+/* ================= CARD ================= */
 .card{
   width:min(880px, 100%);
   background: var(--glass);
@@ -27,21 +28,61 @@ body{
   border-radius: 22px;
   padding: 22px 22px 16px;
   box-shadow: 0 20px 60px rgba(0,0,0,.35);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   position: relative;
+  overflow: hidden;
+  align-self: center;
 }
 
+/* shimmer effect */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:-60px;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255,255,255,.08) 35%,
+    rgba(255,255,255,.16) 50%,
+    rgba(255,255,255,.08) 65%,
+    transparent 100%
+  );
+  transform: translateX(-40%) rotate(10deg);
+  animation: shimmer 6s ease-in-out infinite;
+  pointer-events:none;
+  opacity:.45;
+}
+
+@keyframes shimmer{
+  0%, 35%   { transform: translateX(-55%) rotate(10deg); opacity:.25; }
+  55%       { transform: translateX(10%) rotate(10deg);  opacity:.55; }
+  100%      { transform: translateX(35%) rotate(10deg);  opacity:.25; }
+}
+
+/* ================= BADGE ================= */
 .badge{
   position:absolute;
-  top:16px;
-  right:16px;
-  font-weight:800;
-  font-size:22px;
-  padding:10px 14px;
+  top:14px;
+  right:14px;
+
   border-radius:999px;
-  background: rgba(255,255,255,.14);
+  padding:8px 14px;
+
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:.6px;
+
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  backdrop-filter: blur(8px);
 }
 
+.badge::before{
+  content: "🎂 ";
+}
+
+/* ================= TEXT ================= */
 .title{
   margin: 6px 0 10px;
   font-size: 22px;
@@ -53,39 +94,56 @@ body{
   opacity:.75;
 }
 
+/* ================= AUDIO ================= */
 audio{
   width:100%;
   margin: 10px 0 16px;
 }
 
+/* ================= LYRICS ================= */
 .lyrics{
   display:flex;
   flex-direction:column;
-  gap:10px;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(0,0,0,.22);
-  min-height: 200px;
+  gap:12px;
+  padding: 18px 18px 20px;
+  border-radius: 18px;
+
+  min-height: 320px;
+
+  background: rgba(0,0,0,.28);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 16px 40px rgba(0,0,0,.25);
 }
 
 .line{
-  font-size: 26px;
-  opacity: .5;
-  transition: all .2s;
+  font-size: 28px;
+  opacity: .45;
+  transition: opacity .2s ease, transform .2s ease, filter .2s ease;
+  filter: blur(0.2px);
 }
 
 .line.active{
   opacity: 1;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(255,255,255,.8);
+  font-weight: 800;
+  transform: translateY(-2px) scale(1.01);
+  filter: none;
+  text-shadow: 0 10px 26px rgba(0,0,0,.55);
+  animation: pop .22s ease-out;
 }
 
+/* @keyframes pop{
+  from { transform: translateY(0) scale(.99); }
+  to   { transform: translateY(-2px) scale(1.01); }
+} */
+
+/* ================= FOOTER ================= */
 .footer{
   margin-top: 10px;
   display:flex;
   justify-content:space-between;
 }
 
+/* ================= BUTTON ================= */
 .btn{
   cursor:pointer;
   border: 1px solid rgba(255,255,255,.22);
@@ -93,4 +151,17 @@ audio{
   color: #fff;
   padding: 8px 12px;
   border-radius: 12px;
+  transition: all .2s ease;
+}
+
+.btn:hover{
+  background: rgba(255,255,255,.25);
+  transform: translateY(-1px);
+}
+
+#confetti{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
 }
